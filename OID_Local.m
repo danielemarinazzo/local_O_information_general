@@ -9,7 +9,7 @@ function O_inf_dyn = OID_Local(x,p,target,method)
 % x         -   Time series size [T,N] with T samples and N variables 
 % p         -   Length of temporal embedding
 % target    -   One or more target variables
-% method    -   data type: 'discrete','continous','gaussian'
+% method    -   data type: 'discrete','continuous','gaussian'
 
 
 % Samples and variables
@@ -31,13 +31,13 @@ T = size(x,1);
 switch lower(method)
     case 'discrete'
         probFunction = @(x) ProbabilityLocalDiscrete(x);
-    case 'continous'
+    case 'continuous'
         probFunction = @(x) ProbabilityLocalKernel(x);        
     case 'gaussian'
         probFunction = @(x) ProbabilityLocalGaussian(x);        
     otherwise
         O_inf_dyn = NaN;
-        disp('Tipo di dati non corretto');
+        disp('unknown data type');
         return
 end
 
