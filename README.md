@@ -1,5 +1,5 @@
 # local_O_information_general
-extension of local O info for different type of variables, including discrete.
+extension of local O info for different types of variables, including discrete.
 
 Generalizes and improves on https://github.com/danielemarinazzo/local_O_information
 
