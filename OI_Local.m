@@ -1,6 +1,6 @@
 function O_inf = OI_Local(x,method)
 
-% Calculates the dynamic local O-information for multivariate stochastic processes.
+% Calculates the local O-information for multivariate stochastic processes.
 % Works in the case of discrete systems (with positive integer values), of
 % non-Gaussian continuous systems (with kernel methods for estimating the
 % probability) or for Gaussian systems.
