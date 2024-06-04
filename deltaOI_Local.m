@@ -10,8 +10,10 @@ function [d_tc, d_dtc, d_o] = deltaOI_Local(x,method)
 % OUTPUT    
 %           -   d_tc, size [T,N], d_tc(t,i) local variation of total 
 %                     correlation at time t of variable i
-%           -   d_dtc, size [T,N], d_tc(t,i) è local variation of dual 
-%                     total correlation at time t of variable i        
+%           -   d_dtc, size [T,N], d_tc(t,i) local variation of dual 
+%                     total correlation at time t of variable i 
+%           -   d_o, size [T,N], d_tc(t,i) local variation of O
+%                     information at time t of variable i (all columns equal, redundant sanity check)
 % method    -   'discrete','continous','gaussian'
 
 [T,N] = size(x);
@@ -19,13 +21,13 @@ function [d_tc, d_dtc, d_o] = deltaOI_Local(x,method)
 switch lower(method)
     case 'discrete'
         probFunction = @(x) ProbabilityLocalDiscrete(x);
-    case 'continous'
+    case 'continuous'
         probFunction = @(x) ProbabilityLocalKernel(x);        
     case 'gaussian'
         probFunction = @(x) ProbabilityLocalGaussian(x);        
     otherwise
         oi = NaN;
-        disp('Tipo di dati non corretto');
+        disp('Unknown data type');
         return
 end
 
