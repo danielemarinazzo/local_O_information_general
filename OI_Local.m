@@ -7,7 +7,7 @@ function O_inf = OI_Local(x,method)
 % 
 % INPUT 
 % x         -   Time series [T,N] T samples, N variables
-% method    -   'discrete','continous','gaussian'
+% method    -   'discrete','continuous','gaussian'
 
 [T,N] = size(x);
 
@@ -15,13 +15,13 @@ function O_inf = OI_Local(x,method)
 switch lower(method)
     case 'discrete'
         probFunction = @(x) ProbabilityLocalDiscrete(x);
-    case 'continous'
+    case 'continuous'
         probFunction = @(x) ProbabilityLocalKernel(x);        
     case 'gaussian'
         probFunction = @(x) ProbabilityLocalGaussian(x);        
     otherwise
         O_inf = NaN;
-        disp('Tipo di dati non corretto');
+        disp('Unknown data type');
         return
 end
 
@@ -40,7 +40,7 @@ for i = 1:N
     h_i = -log2(p_i);
     h_not_i = -log2(p_not_i);
     
-    % Compoute difference and sum
+    % Compute difference and sum
     O_inf = O_inf + (h_i - h_not_i);
 end
 
